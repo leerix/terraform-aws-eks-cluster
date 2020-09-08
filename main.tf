@@ -91,7 +91,7 @@ resource "aws_iam_openid_connect_provider" "default" {
   count = (local.enabled && var.oidc_provider_enabled) ? 1 : 0
   url   = join("", aws_eks_cluster.default.*.identity.0.oidc.0.issuer)
 
-  client_id_list = ["sts.amazonaws.com"]
+  client_id_list = ["sts.amazonaws.com.cn"]  # AWS China
 
   # it's thumbprint won't change for many years
   # https://github.com/terraform-providers/terraform-provider-aws/issues/10104
